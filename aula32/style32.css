@@ -1,0 +1,29 @@
+div.curso{
+display: flex;
+justify-content: center;
+width: 200px;
+border: 4px solid #888;
+border-radius: 20px;
+padding: 10px;
+margin: 5px 0px;
+cursor: pointer;
+}
+
+div.curso:hover {
+    border-color: red;
+}
+
+.c1 {
+    background-color: #ccc;
+}
+
+.c2 {
+    background-color: #444;
+    color: ccc;
+}
+
+.destaque {
+    background-color: rgb(97, 21, 251) !important;
+    color: rgb(255, 255, 255) !important;
+    border-color: rgb(21, 48, 135) !important;
+}
