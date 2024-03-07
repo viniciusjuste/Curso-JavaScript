@@ -19,7 +19,7 @@ if (mapa.has(pes)){
 }
 res += "</br> o tamanho da coleção é " + mapa.size
 
-caixa.innerHTML = 
+caixa.innerHTML = res
 
 mapa.forEach((el) => {
     console.log(el)
