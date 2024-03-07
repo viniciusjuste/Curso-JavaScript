@@ -7,7 +7,7 @@ musica.add('musica10')
 musica.add('musica1')
 
 musica.delete('musica1')
-musica.clear()
+// musica.clear()
 
 console.log(musica)
 
