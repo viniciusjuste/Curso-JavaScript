@@ -44,6 +44,21 @@ const btn_addCarro = document.querySelector('#btn_addCarro');
 const f_nome = document.querySelector('#f_nome');
 const f_portas = document.querySelector('#f_portas');
 
+
+f_tipoMilitar.addEventListener('click', (evt) => {
+    f_nome.value = ''
+    f_portas.value = 0
+    f_blindagem.removeAttribute('disabled')
+    f_municao.removeAttribute('disabled')
+})
+
+f_tipoNormal.addEventListener('click', (evt) => {
+    f_blindagem.value = 0
+    f_municao.value = 0
+    f_blindagem.setAttribute('disabled', 'disabled')
+    f_municao.setAttribute('disabled', 'disabled')
+})
+
 let a_carros = [];
 
 const removerCarro = (quem) => {
