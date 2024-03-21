@@ -3,7 +3,7 @@ const numero = document.getElementById("numero")
 
 
 let promise = new Promise((resolve, reject) => {
-    let resultado = false
+    let resultado = true
     let tempo = 3000
     setTimeout(() => {
        if (resultado){
