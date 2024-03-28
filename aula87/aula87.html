@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 87 de JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CFB Cursos</h1>
+
+    <form onsubmit="event.preventDefault()"> <!-- 'onsubmit="event.preventDefault()"' cancela o submit do formulário para que o botão funcione para navegação. --> 
+        
+        <input type="url" name="url" id="url" placeholder="https://cfbcursos.com.br" pattern="https://.*" size="30" required>
+
+        <button id="btn_url">Ir</button>
+    </form>
+
+    <script src="aula87.js"></script>
+</body>
+</html>
