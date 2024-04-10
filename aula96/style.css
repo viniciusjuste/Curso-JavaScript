@@ -19,7 +19,7 @@
     width: 300px;
 }
 
-#campo{
+.campo{
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
