@@ -12,17 +12,17 @@ let anima = null
 
 const mover = (dir) => {
    carro.style.left = parseInt(carro.style.left) + (10 * dir) + 'px'
-   anima = setTimeout(move, 20, dir)
+   anima = setTimeout(mover, 20, dir)
 }
 
 btn_esquerda.addEventListener('click', (evt) => {
  clearTimeout(anima)
- move(-1)
+ mover(-1)
 })
 
 btn_direita.addEventListener('click', (evt) => {
     clearTimeout(anima)
-    move(1)
+    mover(1)
 })
 
 btn_parar.addEventListener('click', (evt) => {
