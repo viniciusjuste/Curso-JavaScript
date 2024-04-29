@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 128 de JavaScript</title>
+</head>
+<body>
+    <div style="width: 500px; height: 500px;">
+        <canvas id="grafico1"></canvas>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        const ctx = document.getElementById('grafico1');
+       let labelX = ['Disponibilidade', 'Qualidade', 'Performance']
+       let valores = [0, 0, 0]
+
+       // Tenho que jogar o gráfico dentro de uma variável para poder dar o UPDATE depois.
+       let grafico1 = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labelX,
+            datasets: [{
+              label: '# of Votes',
+              data: valores,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const pegarDadosGrafico = () => {
+            const endpoint = 'https://0ada186c-c03f-430d-909f-c308e08fbfd7-00-3rc2j7umb0rki.worf.replit.dev/'
+            fetch(endpoint)
+            .then(res => res.json())
+            .then(res => {
+                valores[0] = res.disponibilidade
+                valores[1] = res.qualidade
+                valores[2] = res.performance
+                grafico1.update()
+            })
+            .catch(erro => {
+                console.log('ERRO ' + erro)
+            })
+        }
+
+        setInterval(pegarDadosGrafico, 2000)
+
+      </script>
+</body>
+</html>
