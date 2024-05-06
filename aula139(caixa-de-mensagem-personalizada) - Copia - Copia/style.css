@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+*{
+    border: none;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.btn_mostrarCaixaMensagem{
+    padding: 10px 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.btn_mostrarCaixaMensagem2{
+    padding: 10px 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
