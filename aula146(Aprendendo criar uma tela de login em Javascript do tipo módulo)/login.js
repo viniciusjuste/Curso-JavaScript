@@ -5,9 +5,15 @@ class Login {
     static acessoLogado = null
     static endpoint = 'https://442ca741-6778-4824-b927-bb4cf9e5d275-00-3hwznc1psu5ku.janeway.replit.dev/'
     static estiloCss = null
+    static config = {
+        cor: '#fff',
+        img: 'imagens/logo.png'
+    }
 
-    static login = (mat, pas) => {
-
+    static login = (mat, pas, config = null) => {
+        if (config != null) {
+            this.config = config
+        }
         this.endpoint += `?matricula=${mat}&senha=${pas}`
 
         this.estiloCss =
@@ -21,14 +27,79 @@ class Login {
             ".campoLogin label { font-size: 16px; color: #eee; }" +
             ".campoLogin input { padding: 10px; background-color: #483D8B; border-radius: 5px; border: 1px solid #3C3066; color: #eee; }" +
             ".botoeslogin { display: flex; justify-content: space-around; align-items: center; width: 100%; box-sizing: inherit; margin-top: 20px; }" +
-            ".botoeslogin button { cursor: pointer; background-color: #8A2BE2; color: #fff; border-radius: 5px; padding: 15px; width: 120px; border: none; transition: background-color 0.3s ease; }" +
+            `.botoeslogin button { cursor: pointer; background-color: #8A2BE2; color: ${this.config.cor}; border-radius: 5px; padding: 15px; width: 120px; border: none; transition: background-color 0.3s ease; }` +
             ".botoeslogin button:hover { background-color: #6A1E9C; }"
 
-            const styleEstilo = document.createElement('style');
-            styleEstilo.innerHTML = this.estiloCss; 
-            styleEstilo.setAttribute('id', 'id_EstiloLogin');
-            document.head.appendChild(styleEstilo);
-            
+        const styleEstilo = document.createElement('style');
+        styleEstilo.innerHTML = this.estiloCss;
+        styleEstilo.setAttribute('id', 'id_EstiloLogin');
+        document.head.appendChild(styleEstilo);
+
+        // Criando o elemento fundoLogin
+        const fundoLogin = document.createElement('div');
+        fundoLogin.setAttribute('id', 'fundoLogin');
+        fundoLogin.classList.add('fundoLogin');
+
+        // Criando o elemento baseLogin
+        const baseLogin = document.createElement('div');
+        baseLogin.setAttribute('id', 'baseLogin');
+        baseLogin.classList.add('baseLogin');
+
+        // Criando o elemento elementosLogin
+        const elementosLogin = document.createElement('div');
+        elementosLogin.setAttribute('id', 'elementosLogin');
+        elementosLogin.classList.add('elementosLogin');
+
+        // Criando os campos de login
+        const campoUsername = document.createElement('div');
+        campoUsername.classList.add('campoLogin');
+        campoUsername.innerHTML = `
+    <label>Username</label>
+    <input type="text" name="f_username" id="f_username">
+`;
+
+        const campoSenha = document.createElement('div');
+        campoSenha.classList.add('campoLogin');
+        campoSenha.innerHTML = `
+    <label>Senha</label>
+    <input type="password" name="f_senha" id="f_senha">
+`;
+
+        // Criando os botões de login
+        const botoesLogin = document.createElement('div');
+        botoesLogin.classList.add('botoeslogin');
+        botoesLogin.innerHTML = `
+    <button id="btn_login">Login</button>
+    <button id="btn_cancelar">Cancelar</button>
+`; 
+
+        // Adicionando os campos e botões dentro do elemento elementosLogin
+        elementosLogin.appendChild(campoUsername);
+        elementosLogin.appendChild(campoSenha);
+        elementosLogin.appendChild(botoesLogin);
+
+        // Criando o elemento logoLogin
+        const logoLogin = document.createElement('div');
+        logoLogin.setAttribute('id', 'logoLogin');
+        logoLogin.classList.add('logoLogin');
+        logoLogin.innerHTML = `
+    <img src="imagens/logo.png" alt="Logo" title="CFB cursos">
+`;
+
+        // Adicionando elementos dentro do baseLogin
+        baseLogin.appendChild(elementosLogin);
+        baseLogin.appendChild(logoLogin);
+
+        // Adicionando o baseLogin dentro do fundoLogin
+        fundoLogin.appendChild(baseLogin);
+
+        // Adicionando o fundoLogin ao documento
+        document.body.appendChild(fundoLogin);
+
+
+
+
+
 
         // fetch(this.endpoint)
         //     .then(res => res.json())
