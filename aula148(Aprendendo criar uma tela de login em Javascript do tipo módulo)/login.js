@@ -14,7 +14,7 @@ class Login {
         if (config != null) {
             this.config = config
         }
-       
+
 
         this.estiloCss =
             ".fundoLogin { display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; top: 0px; left: 0px; background-color: #1a1a2e; box-sizing: border-box; }" +
@@ -101,21 +101,10 @@ class Login {
         });
 
         document.getElementById('btn_login').addEventListener('click', () => {
-           if(this.verificarLogin()){
-            this.fechar()
-           }
-           else{
+            this.verificarLogin()
 
-           }
         });
 
-        // fetch(endpoint)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         if (res) {
-        //             this.logado = true
-        //             this.matLogado = mat
-        //             this.nome
     }
 
     static fechar() {
@@ -128,13 +117,27 @@ class Login {
     static verificarLogin = () => {
         const mat = document.getElementById('f_username').value
         const pas = document.getElementById('f_senha').value
-        if (mat == '123' && pas == '321') {
-            return true
-        }
-        else {
-            return false
-        }
 
+        const endpoint = `https://442ca741-6778-4824-b927-bb4cf9e5d275-00-3hwznc1psu5ku.janeway.replit.dev/?matricula=${mat}&senha=${pas}`
+
+        fetch(endpoint)
+            .then(response => response.json())
+            .then(res => {
+                if (res) {
+                    this.logado = true
+                    this.matLogado = mat
+                    this.nomeLogado = res.nome
+                    this.acessoLogado = res.acesso
+                    this.fechar()
+                }
+                else {
+                    this.logado = false
+                    this.matLogado = null
+                    this.nomeLogado = null
+                    this.acessoLogado = null
+                    alert('Login não efetuado, username ou senha inválidos.')
+                }
+            })
     }
 }
 
