@@ -1,7 +1,6 @@
-const configDataGridView = () => {
-    const endpoint = 'produtos.json'
+const configDataGridView = {
+    endpoint: 'produtos.json'
 }
-
 const datagridView = (configDataGridView) => {
     fetch(configDataGridView.endpoint)
         .then(res => res.json())
