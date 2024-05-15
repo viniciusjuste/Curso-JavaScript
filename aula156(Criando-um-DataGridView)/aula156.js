@@ -61,3 +61,4 @@ const datagridView = (configDataGridView) => {
 
 datagridView(configDataGridView)
 
+// configurei o node red
