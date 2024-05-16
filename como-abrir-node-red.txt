@@ -1,1 +1,3 @@
 Para abrir o node-red: tem que abrir o windows powershell e digitar 'node-red', apos isso, colar o link da porta no navegador
+
+PARA fechar ele tem que ir no powershell e digitar: "CTRL" + "C" 
