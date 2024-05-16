@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    border: none;
+}
+
+.dgv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.dgv_titulos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    background-color: #138;
+    color: #fff;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.dgv_titulos div,
+.dgv_linha div {
+    padding: 5px;
+}
+
+.dgv_dados {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.dgv_linha {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.dgv_linha:nth-child(odd) {
+    background-color: #c4bbbb;
+}
+
+.dgv_linha:nth-child(even) {
+    background-color: #ddd;
+}
+
+.dgv_linha:hover {
+    background-color: #088 !important;
+    cursor: pointer;
+    color: white !important;
+}
+
+.coluna {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.c1 {
+    width: 50px;
+}
+
+.c2 {
+    width: 150px;
+}
+
+.c3 {
+    width: 150px;
+}
+
+.c4 {
+    width: 150px;
+}
+
+.c5 {
+    width: 87px;
+    justify-content: space-around !important;
+}
+
+.dgv_icone{
+    width: 20px;
+}
