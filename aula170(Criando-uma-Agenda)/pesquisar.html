@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="pesquisa">
+        <div class="campoPesquisa">
+            <label for="f_id">ID</label>
+            <input type="radio" name="f_pesquisar" id="f_id" value="id">
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_nome">Nome</label>
+            <input type="radio" name="f_pesquisar" id="f_nome" value="nome" checked>
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_nascimento">Data de nascimento</label>
+            <input type="radio" name="f_pesquisar" id="f_nascimento" value="nascimento">
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_email">E-mail</label>
+            <input type="radio" name="f_pesquisar" id="f_email" value="email">
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_txtPesquisa">Pesquisar por</label>
+            <input type="text" name="f_txtPesquisa" id="f_txtPesquisa">
+        </div>
+
+        <div class="campoPesquisa">
+            <button id="btn_pesquisar" class="btn_geral">Pesquisar</button>
+        </div>
+    </div>
+
+    <!-- Form que mostra resultado de pesquisa -->
+    <div id="resultado" class="resultado ocultar">
+        <div class="campoMostar">
+            <label for="f_id">ID</label>
+            <input class="inputMostrar" type="text" name="f_pesquisar" id="f_idMostar" readonly>
+        </div>
+
+        <div class="campoMostar">
+            <label for="f_nome">Nome</label>
+            <input class="inputMostrar" type="text" name="f_pesquisar" id="f_nomeMostar" readonly>
+        </div>
+
+        <div class="campoMostar">
+            <label for="f_nascimento">Data de nascimento</label>
+            <input class="inputMostrar" type="text" name="f_pesquisar" id="f_nascimentoMostar" readonly>
+        </div>
+
+        <div class="campoMostar">
+            <label for="f_email">E-mail</label>
+            <input class="inputMostrar" type="text" name="f_pesquisar" id="f_emailMostar" readonly>
+        </div>
+
+        <div class="campoMostar">
+            <button id="btn_ok" class="btn_geral">Ok</button>
+        </div>
+    </div>
+    <script type="module" src="pesquisar.js"></script>
+</body>
+
+</html>
