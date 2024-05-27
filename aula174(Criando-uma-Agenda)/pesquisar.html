@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="pesquisa">
+        <div class="campoPesquisa">
+            <label for="f_id">ID</label>
+            <input type="radio" name="f_pesquisar" id="f_id" value="id">
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_nome">Nome</label>
+            <input type="radio" name="f_pesquisar" id="f_nome" value="nome" checked>
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_nascimento">Data de nascimento</label>
+            <input type="radio" name="f_pesquisar" id="f_nascimento" value="nascimento">
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_email">E-mail</label>
+            <input type="radio" name="f_pesquisar" id="f_email" value="email">
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_celular">Celular</label>
+            <input type="radio" name="f_pesquisar" id="f_celular" value="celular">
+        </div>
+
+        <div class="campoPesquisa">
+            <label for="f_txtPesquisa">Pesquisar por</label>
+            <input type="text" name="f_txtPesquisa" id="f_txtPesquisa">
+        </div>
+
+        <div class="campoPesquisa">
+            <button id="btn_pesquisar" class="btn_geral">Pesquisar</button>
+        </div>
+    </div>
+
+    <!-- dgv que mostra resultado de pesquisa -->
+   <div id="dgv" class="dgv ocultar">
+    <div id="resultado" class="resultado">
+        <div id="titulo" class="titulo">
+            <div class="titulo c1">Id</div>
+            <div class="titulo c2">Nome</div>
+            <div class="titulo c3">Celular</div>
+            <div class="titulo c4">E-mail</div>
+            <div class="titulo c5">Data</div>
+        </div>
+
+        <div id="dados" class="dados">
+
+        </div>
+    </div>
+   </div>
+    <script type="module" src="pesquisar.js"></script>
+</body>
+
+</html>
