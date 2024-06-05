@@ -6,6 +6,12 @@ const f_celular = document.getElementById('f_celular')
 const f_email = document.getElementById('f_email')
 const f_dataNascimento = document.getElementById('f_dataNascimento')
 
+fetch('gestao.php')
+.then(res => res.json())
+.then(res => {
+    console.log(res)
+})
+
 const preencherDgv = () => {
     dados.innerHTML = '';
     const endpoint = `http://127.0.0.1:1880/pesquisartodoscontatos`;
