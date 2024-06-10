@@ -1,0 +1,27 @@
+:root {
+    --roxo-meia-noite: #69239E;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--roxo-meia-noite);
+    color: white;
+    height: 34px;
+    width: 100%;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 540px;
+}
+
+#configuracao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
