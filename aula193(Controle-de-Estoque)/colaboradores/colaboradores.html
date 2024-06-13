@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboradores</title>
+    <link rel="stylesheet" href="colaboradores.css">
+    <link rel="stylesheet" href="../estoque_geral.css">
+</head>
+
+<body>
+    <div id="topoJanela" class="topoJanela">
+        <div></div>
+        <div>Colaboradores</div>
+        <div>
+            <img src="../imagens/add-icon.svg" class="btn_mainOper" id="btn_add" title="Adicionar novo operador">
+        </div>
+    </div>
+
+    <div id="novoColaborador" class="popup ocultar_popUp">
+        <div class="janelaPopup">
+            <div class="tituloPopup">
+                <div>Novo colaborador</div>
+                <img src="../imagens/close-icon.svg" class="btn_janelaOper" id="btn_fechar">
+            </div>
+            <div class="corpoPopup">
+                <div class="campo_form">
+                    <label for="f_nome">Nome:</label>
+                    <input type="text" name="f_nome" id="f_nome">
+                </div>
+
+                <div class="campo_form">
+                    <label for="f_tipoColab">Tipo colaborador:</label>
+                    <select name="f_tipoColab" id="f_tipoColab">
+
+                    </select>
+                </div>
+
+                <div class="campo_form">
+                    <label for="f_status">Status colaborador:</label>
+                    <select name="f_status" id="f_status">
+                        <option value="A">Ativo</option>
+                        <option value="I">Inativo</option>
+                    </select>
+                </div>
+
+                <div class="campo_form">
+                    <label for="f_telefone">Telefones:</label>
+                    <input type="tel" name="f_telefone" id="f_telefone">
+                    <div id="telefones">
+                        <!-- <div class="tel">
+                            <div class="num_tel">(31) 8888-8888</div>
+                            <div class="delTel"><img src="../imagens/delete-icon.svg"></div>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="rodapePopup">
+                <button id="btn_gravarPopUp" class="btn_comandoPopup">Gravar</button>
+                <button id="btn_cancelarPopUp" class="btn_comandoPopup">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="grid" class="grid">
+        <div id="tituloGrid" class="tituloGrid">
+            <div class="colunaTituloGrid c1">Id</div>
+            <div class="colunaTituloGrid c2">Nome</div>
+            <div class="colunaTituloGrid c3">Tipo</div>
+            <div class="colunaTituloGrid c4">Status</div>
+            <div class="colunaTituloGrid c5">Operações</div>
+        </div>
+
+        <div id="dadosGrid" class="dadosGrid">
+            <!-- <div class="linhaGrid">
+            <div class="colunaLinhaGrid c1">Id</div>
+            <div class="colunaLinhaGrid c2">Nome</div>
+            <div class="colunaLinhaGrid c3">Tipo</div>
+            <div class="colunaLinhaGrid c4">Status</div>
+            <div class="colunaLinhaGrid c5">Operações</div>
+         </div> -->
+        </div>
+    </div>
+
+    <script type="module" src="colaboradores.js"></script>
+    <script src="../estoque_geral.js" type="module"></script>
+</body>
+
+</html>
