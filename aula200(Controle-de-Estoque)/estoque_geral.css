@@ -1,0 +1,341 @@
+* {
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --roxo-meia-noite: #69239E;
+    --fundo-janela: #ccc;
+}
+
+body {
+    overflow: hidden;
+}
+
+.menu_principal {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+
+.btn_menu_principal {
+    width: inherit;
+}
+
+.ocultar {
+    left: -211px !important;
+}
+
+.menu_itens {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: #aaa;
+    height: 100vh;
+}
+
+.btn_item_menu {
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px 15px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    /* Cor de fundo inicial */
+    color: #333;
+    /* Cor do texto inicial */
+    transition: background-color 0.3s, color 0.3s;
+    /* Transição suave */
+}
+
+.btn_item_menu:hover {
+    background-color: #ccc;
+    /* Cor de fundo ao passar o mouse */
+    color: #000;
+    /* Cor do texto ao passar o mouse */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Sombra ao passar o mouse (opcional) */
+}
+
+
+.btn_menu_principal {
+    cursor: pointer;
+    background-color: #eee;
+    padding: 5px;
+}
+
+.btn_menu_principal:hover {
+    background-color: #ccc;
+    color: #000;
+    border: 1px solid #aaa;
+}
+
+/* Configuração do Iframe */
+.f_principal {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /* border: 1px solid red; */
+}
+
+/* FORMATAÇÃO DE GRIDS */
+.grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tituloGrid {
+    background-color: var(--roxo-meia-noite);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.colunaTituloGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dadosGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.linhaGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.linhaGrid:hover {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho do elemento */
+    transition: all 0.3s ease; /* Suaviza a transição do efeito de hover */
+}
+
+.linhaGrid:nth-child(even) {
+    background-color: #e3dadaaf;
+}
+
+.linhaGrid:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.colunaLinhaGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icone_op {
+    margin-left: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* ************************* */
+
+/* TOPO DA JANELA */
+.topoJanela {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 5px 10px 0px;
+}
+
+.btn_mainOper {
+    background-color: var(--roxo-meia-noite);
+    border-radius: 100px;
+    cursor: pointer;
+    width: 35px;
+}
+
+/* ************************* */
+
+/* JANELA NOVO */
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.janelaPopup {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+    flex-direction: column;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+}
+
+.tituloPopup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: var(--roxo-meia-noite);
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+    width: 100%;
+}
+
+.btn_janelaOper {
+    width: 25px;
+    cursor: pointer;
+}
+
+.corpoPopup {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--fundo-janela);
+    width: 100%;
+    padding: 5px;
+    flex-direction: column;
+}
+
+.campo_form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.campo_form2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    background-color: #fff;
+    padding: 5px;
+    border: 2px solid var(--roxo-meia-noite);
+}
+
+.campo_form input,
+.campo_form select,
+.campo_form div {
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    border: 2px solid var(--roxo-meia-noite);
+    background-color: #fff;
+}
+
+.rodapePopup {
+    width: 100%;
+    background-color: var(--roxo-meia-noite);
+    color: white;
+    border-radius: 0px 0px 5px 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn_comandoPopup {
+    cursor: pointer;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 8px;
+    border: 2px solid var(--roxo-meia-noite);
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    text-transform: uppercase;
+}
+
+.btn_comandoPopup:hover {
+    background-color: #b77ce4;
+    color: #4b345d;
+    border-color: #fff;
+    color: white;
+    padding: 5px;
+}
+
+.ocultar_popUp {
+    display: none;
+}
+
+/* Estilo para o contêiner de telefones */
+#telefones {
+    margin-top: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo para cada bloco de telefone */
+.tel {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Estilo para o número de telefone */
+.num_tel {
+    background-color: white;
+    padding: 10px;
+    color: black;
+    flex-grow: 1;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Estilo para o botão de deletar */
+.delTel {
+    background-color: #888 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 30px !important;
+}
+
+/* Estilo para o ícone de deletar */
+.delTel img {
+    height: 15px;
+    width: 15px;
+}
+
+/* Efeito de hover para o botão de deletar */
+.delTel:hover {
+    background-color: #d32f2f !important;
+}
+
+
+/* ************************* */
