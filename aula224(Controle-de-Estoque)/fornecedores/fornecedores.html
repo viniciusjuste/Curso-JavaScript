@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fornecedores</title>
+    <link rel="stylesheet" href="fornecedores.css">
+    <link rel="stylesheet" href="../estoque_geral.css">
+</head>
+
+<body>
+    <div id="topoJanela" class="topoJanela">
+        <div></div>
+        <div>Fornecedores</div>
+        <div>
+            <img src="../imagens/add-icon.svg" class="btn_mainOper" id="btn_add" title="Adicionar novo operador">
+            <img src="../imagens/list_icon.svg" class="btn_mainOper" id="btn_listarTudo" title="Pesquisar todos">
+            <img src="../imagens/search_icon.svg" class="btn_mainOper" id="btn_pesq" title="Pesquisar operador">
+        </div>
+    </div>
+
+    <div id="pesquisa" class="popup ocultar_popUp">
+        <div class="janelaPopup">
+            <div class="tituloPopup">
+                <div id="tituloColaboradorPesquisar">Pesquisar</div>
+                <img src="../imagens/close-icon.svg" class="btn_janelaOper" id="btn_fecharPopUpPesq">
+            </div>
+            <div class="corpoPopup">
+                <div class="campo_form">
+                    <label>Selecione o tipo de filtragem:</label>
+                    <div class="campoRadio">
+                        <input type="radio" name="f_pesqTipo" id="f_pesqId" checked>ID
+                    </div>
+                    <div class="campoRadio">
+                        <input type="radio" name="f_pesqTipo" id="f_pesqNome">Nome
+                    </div>
+
+                </div>
+
+                <div class="campo_form">
+                    <input type="text" name="f_pesq" id="f_pesq">
+                </div>
+            </div>
+            <div class="rodapePopup">
+                <button id="btn_pesquisar" class="btn_comandoPopup">Pesquisar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="filtragem" class="filtragem">
+        <div class="campo_form campoFiltragem">
+            <label for="f_filtragem">Filtrar:</label>
+            <input type="text" name="f_filtragem" id="f_filtragem" class="inputFiltragem">
+        </div>
+    </div>
+
+    <div id="novoFornecedor" class="popup ocultar_popUp">
+        <div class="janelaPopup">
+            <div class="tituloPopup">
+                <div id="tituloColaborador">Novo fornecedor</div>
+                <img src="../imagens/close-icon.svg" class="btn_janelaOper" id="btn_fechar">
+            </div>
+            <div class="corpoPopup">
+                <div class="campo_form">
+                    <label for="f_nome">Nome:</label>
+                    <input type="text" name="f_nome" id="f_nome">
+                </div>
+
+                <div class="campo_form">
+                    <label for="f_status">Status fornecedor:</label>
+                    <select name="f_status" id="f_status">
+                        <option value="A">Ativo</option>
+                        <option value="I">Inativo</option>
+                    </select>
+                </div>
+
+                <div class="campo_form">
+                    <label for="f_foto">Foto:</label>
+                    <input type="file" name="f_foto" id="f_foto" accept="image/png, image/jpeg, image/jpg">
+                </div>
+
+                <div class="campo_form2">
+                    <img src="#" id="img_foto">
+                </div>
+
+            </div>
+            <div class="rodapePopup">
+                <button id="btn_gravarPopUp" class="btn_comandoPopup">Gravar</button>
+                <button id="btn_cancelarPopUp" class="btn_comandoPopup">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="areaGrid" id="areaGrid">
+        <div id="grid" class="grid">
+            <div id="tituloGrid" class="tituloGrid">
+                <div class="colunaTituloGrid c1">Id</div>
+                <div class="colunaTituloGrid c2">Nome</div>
+                <div class="colunaTituloGrid c3">Status</div>
+                <div class="colunaTituloGrid c4">Operações</div>
+            </div>
+            <div id="dadosGrid" class="dadosGrid">
+                <!-- <div class="linhaGrid">
+                <div class="colunaLinhaGrid c1">Id</div>
+                <div class="colunaLinhaGrid c2">Nome</div>
+                <div class="colunaLinhaGrid c3">Tipo</div>
+                <div class="colunaLinhaGrid c4">Status</div>
+                <div class="colunaLinhaGrid c5">Operações</div>
+             </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="fornecedores.js" type="module"></script>
+    <script src="../estoque_geral.js" type="module"></script>
+</body>
+
+</html>
