@@ -12,6 +12,7 @@ const btn_fecharPopUpPesq = document.getElementById('btn_fecharPopUpPesq');
 const btn_gravarPopUp = document.getElementById('btn_gravarPopUp');
 const btn_cancelarPopUp = document.getElementById('btn_cancelarPopUp');
 const f_tipoprod = document.getElementById('f_tipoprod');
+const f_fornprod = document.getElementById('f_fornprod');
 const telefones = document.getElementById('telefones');
 const f_nome = document.getElementById('f_nome');
 const f_status = document.getElementById('f_status');
@@ -99,8 +100,8 @@ const criarCaixaTelefone = (numeroTelefone, idTelefone, tipo) => {
     }
 };
 
-const carregarTodosColabs = () => {
-    const endpoint_todosProdutoes = `${servidor}todaspessoas`;
+const carregarTodosProds = () => {
+    const endpoint_todosProdutoes = `${servidor}todosprodutos`;
     fetch(endpoint_todosProdutoes)
         .then(res => res.json())
         .then(res => {
@@ -112,7 +113,7 @@ const carregarTodosColabs = () => {
         });
 }
 
-carregarTodosColabs();
+carregarTodosProds();
 
 const criarLinha = (el) => {
     const linhaGrid = document.createElement('div');
@@ -120,22 +121,22 @@ const criarLinha = (el) => {
 
     const colunaLinhaGrid1 = document.createElement('div');
     colunaLinhaGrid1.setAttribute('class', 'colunaLinhaGrid c1');
-    colunaLinhaGrid1.innerHTML = el.n_pessoa_pessoa;
+    colunaLinhaGrid1.innerHTML = el.n_cod_produto;
     linhaGrid.appendChild(colunaLinhaGrid1);
 
     const colunaLinhaGrid2 = document.createElement('div');
     colunaLinhaGrid2.setAttribute('class', 'colunaLinhaGrid c2');
-    colunaLinhaGrid2.innerHTML = el.s_nome_pessoa;
+    colunaLinhaGrid2.innerHTML = el.s_desc_produto;
     linhaGrid.appendChild(colunaLinhaGrid2);
 
     const colunaLinhaGrid3 = document.createElement('div');
     colunaLinhaGrid3.setAttribute('class', 'colunaLinhaGrid c3');
-    colunaLinhaGrid3.innerHTML = el.n_tipopessoa_tipopessoa;
+    colunaLinhaGrid3.innerHTML = el.n_qtde_produto;
     linhaGrid.appendChild(colunaLinhaGrid3);
 
     const colunaLinhaGrid4 = document.createElement('div');
     colunaLinhaGrid4.setAttribute('class', 'colunaLinhaGrid c4');
-    colunaLinhaGrid4.innerHTML = el.c_status_pessoa;
+    colunaLinhaGrid4.innerHTML = el.c_status_produto;
     linhaGrid.appendChild(colunaLinhaGrid4);
 
     const colunaLinhaGrid5 = document.createElement('div');
@@ -143,7 +144,7 @@ const criarLinha = (el) => {
     linhaGrid.appendChild(colunaLinhaGrid5);
 
     const img_status = document.createElement('img');
-    if (el.c_status_pessoa == 'A') {
+    if (el.c_status_produto == 'A') {
         img_status.setAttribute('src', '../imagens/toggle_on.svg');
     } else {
         img_status.setAttribute('src', '../imagens/toggle_off.svg');
@@ -209,9 +210,24 @@ const listaTiposProd = () => {
             f_tipoprod.innerHTML = '';
             res.forEach(el => {
                 const option = document.createElement('option');
-                option.setAttribute('value', el.n_tipoproduto_tipoproduto );
+                option.setAttribute('value', el.n_tipoproduto_tipoproduto);
                 option.innerHTML = el.s_desc_tipoproduto;
                 f_tipoprod.appendChild(option);
+            });
+        });
+}
+
+const listaFornProd = () => {
+    const endpoint_tiposprod = `${servidor}fornprod`;
+    fetch(endpoint_tiposprod)
+        .then(res => res.json())
+        .then(res => {
+            f_fornprod.innerHTML = '';
+            res.forEach(el => {
+                const option = document.createElement('option');
+                option.setAttribute('value', el.n_fornecedor_fornecedor);
+                option.innerHTML = el.s_desc_fornecedor;
+                f_fornprod.appendChild(option);
             });
         });
 }
@@ -227,6 +243,7 @@ btn_add.addEventListener('click', (evt) => {
     f_fornprod.value = '';
     f_statusprod.value = 'A';
     listaTiposProd();
+    listaFornProd();
 });
 
 btn_fechar.addEventListener('click', (evt) => {
@@ -301,24 +318,17 @@ btn_pesquisar.addEventListener('click', () => {
 });
 
 btn_listarTudo.addEventListener('click', (evt) => {
-    carregarTodosColabs();
+    carregarTodosProds();
 });
 
 btn_gravarPopUp.addEventListener('click', (evt) => {
-    const tels = [...document.querySelectorAll('.novoTel')];
-    let numTels = [];
-
-    tels.forEach(el => {
-        numTels.push(el.innerHTML);
-    });
-
     const dados = {
-        n_pessoa_pessoa: evt.target.dataset.idcolab,
-        s_nome_pessoa: f_nome.value,
-        n_tipopessoa_tipopessoa: f_tipoColab.value,
-        c_status_pessoa: f_status.value,
-        numTelefones: numTels,
-        s_foto_pessoa: img_foto.getAttribute('src')
+        n_cod_produto: f_codprod.value,
+        n_tipoproduto_tipoproduto: f_tipoprod.value,
+        s_desc_produto: f_descprod.value,
+        n_fornecedor_fornecedor: f_fornprod.value,
+        n_qtde_produto: f_qtdeprod.value,
+        c_status_produto: f_statusprod.value
     }
 
     const cabecalho = {
@@ -331,7 +341,7 @@ btn_gravarPopUp.addEventListener('click', (evt) => {
     let endpointNovoEditarColab = null;
 
     if (modoJanela == 'n') {
-        endpointNovoEditarColab = `${servidor}novoProduto`;
+        endpointNovoEditarColab = `${servidor}novoprod`;
     } else {
         endpointNovoEditarColab = `${servidor}editarProduto`;
     }
@@ -340,8 +350,8 @@ btn_gravarPopUp.addEventListener('click', (evt) => {
             if (res.status == 200) {
                 if (modoJanela == 'n') {
                     const config = {
-                        titulo: 'Nova pessoa gravada',
-                        texto: 'pessoa gravada com sucesso.',
+                        titulo: 'Novo produto adicionado com sucesso',
+                        texto: 'Novo produto gravado.',
                         cor: '00f',
                         tipo: 'ok',
                         ok: () => {
@@ -355,12 +365,11 @@ btn_gravarPopUp.addEventListener('click', (evt) => {
                         }
                     }
                     Cxmsg.mostrar(config);
-                    carregarTodosColabs();
-                    img_foto.classList.add('ocultar_popUp');
+                    carregarTodosProds();
                 } else {
                     const config = {
                         titulo: 'Edição bem sucedida',
-                        texto: 'pessoa editada com sucesso.',
+                        texto: 'produto editado com sucesso.',
                         cor: '00f',
                         tipo: 'ok',
                         ok: () => {
@@ -382,8 +391,8 @@ btn_gravarPopUp.addEventListener('click', (evt) => {
             }
         })
         .catch(error => {
-            console.error('Erro ao adicionar nova pessoa:', error);
-            alert('Erro ao adicionar nova pessoa. Verifique o console para mais detalhes.');
+            console.error('Erro ao adicionar novo produto:', error);
+            alert('Erro ao adicionar novo produto. Verifique o console para mais detalhes.');
         });
 
     //novoProduto.classList.add('ocultar_popUp');
