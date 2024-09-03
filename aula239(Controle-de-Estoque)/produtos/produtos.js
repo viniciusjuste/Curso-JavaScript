@@ -1,9 +1,5 @@
 import { Cxmsg } from '../utils/cxmsg.js'
 
-
-
-
-
 const dadosGrid = document.getElementById('dadosGrid');
 const btn_add = document.getElementById('btn_add');
 const novoProduto = document.getElementById('novoProduto');
@@ -153,14 +149,14 @@ const criarLinha = (el) => {
     img_status.setAttribute('class', 'icone_op');
 
     // É uma forma de passar o id, por Data Set.
-    img_status.setAttribute('data-idcolab', el.n_pessoa_pessoa);
+    img_status.setAttribute('data-id', `${el.n_cod_produto}`);
 
     img_status.addEventListener('click', (evt) => {
 
         // Aqui eu obtenho o id que eu passei por Data Set.
-        const idcolab = evt.target.dataset.idcolab;
+        const id = evt.target.dataset.id;
         if (evt.target.getAttribute('src') == '../imagens/toggle_on.svg') {
-            const endpoint_mudarStatus = `${servidor}mudarStatusProduto/${idcolab}/I`;
+            const endpoint_mudarStatus = `${servidor}mudarStatusProduto/${id}/I`;
             fetch(endpoint_mudarStatus)
                 .then(res => {
                     if (res.status == 200) {
@@ -169,7 +165,7 @@ const criarLinha = (el) => {
                     }
                 })
         } else {
-            const endpoint_mudarStatus = `${servidor}mudarStatusProduto/${idcolab}/A`;
+            const endpoint_mudarStatus = `${servidor}mudarStatusProduto/${id}/A`;
             fetch(endpoint_mudarStatus)
                 .then(res => {
                     if (res.status == 200) {
@@ -416,15 +412,5 @@ const pegarProdutoPorId = (id) => {
             } else {
                 img_foto.classList.remove('ocultar_popUp');
             }
-        })
-
-    const endpoint_TelefoneProdutoPorId = `${servidor}telefonesProdutoporid/${id}`;
-    fetch(endpoint_TelefoneProdutoPorId)
-        .then(res => res.json())
-        .then(res => {
-            telefones.innerHTML = '';
-            res.forEach(el => {
-                criarCaixaTelefone(el.s_numero_telefone, el.n_telefone_telefone, 'e');
-            });
         })
 }
