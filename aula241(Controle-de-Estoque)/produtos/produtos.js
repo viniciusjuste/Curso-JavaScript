@@ -340,7 +340,7 @@ btn_gravarPopUp.addEventListener('click', (evt) => {
     if (modoJanela == 'n') {
         endpointNovoEditarColab = `${servidor}novoprod`;
     } else {
-        endpointNovoEditarColab = `${servidor}editarProduto`;
+        endpointNovoEditarColab = `${servidor}editarprod`;
     }
     fetch(endpointNovoEditarColab, cabecalho)
         .then(res => {
@@ -380,6 +380,7 @@ btn_gravarPopUp.addEventListener('click', (evt) => {
                         }
                     }
                     Cxmsg.mostrar(config);
+                    carregarTodosProds();
                 }
             } else {
                 return res.text().then(text => {
