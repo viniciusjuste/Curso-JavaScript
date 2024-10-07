@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body,
+html {
+    height: 100%;
+    background-color: #F0F0F0;
+}
+
+.form-container {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+form {
+    width: 100%;
+    max-width: 500px;
+    padding: 50px;
+    background-color: #191970be;
+    border-radius: 15px;
+    color: #ffff;
+}
+
+.formtH1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
