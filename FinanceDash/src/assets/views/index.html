@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dash</title>
+    <link id="themeStyle" rel="stylesheet" href="../css/light-theme.css">
+</head>
+
+<body>
+    <a id="themeBtn"><img src="../img/light_mode.svg" id="themeImg" alt="light-theme"></a>
+    <form id="searchForm">
+        <div class="mb-3"> <label for="companyInput" class="form-label">Simbolo da empresa:</label> <input type="text"
+                class="form-control" id="companyInput" placeholder=" Digite o Simbolo da empresa">
+        </div>
+        <div class="mb-3"> <label for="timeRange">Intervalo de tempo:</label> <select id="timeRange"
+                class="form-select">
+                <option value="7d">Últimos 7 dias</option>
+                <option value="30d">Último mês</option>
+                <option value="1y">Último ano</option>
+            </select> </div> <button type="submit" id="searchBtn" class="btn btn-primary">Pesquisar</button>
+    </form>
+
+    <div class="stock-info">
+        <h2 id="stock-name"></h2>
+        <div class="price-info">
+            <p>Preço Atual: <span id="current-price"></span></p>
+            <p>Variação: <span id="change" class="positive">+2.55</span> (<span id="change-percent"
+                    class="positive">+1.10%</span>)</p>
+        </div>
+        <div class="additional-info">
+            <p>Abertura: <span id="open-price"></span></p>
+            <p>Fechamento Anterior: <span id="previous-close">$231.30</span></p>
+            <p>Máximo do Dia: <span id="high">$237.49</span></p>
+            <p>Mínimo do Dia: <span id="low">$232.37</span></p>
+            <p>Volume: <span id="volume">64,751,367</span></p>
+            <p>Último Dia de Negociação: <span id="latest-day">2024-10-15</span></p>
+        </div>
+    </div>
+
+
+    <script type="module" src="../js/main.js"></script>
+</body>
+
+</html>
