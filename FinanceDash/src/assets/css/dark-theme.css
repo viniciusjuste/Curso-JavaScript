@@ -83,7 +83,7 @@ button:hover {
     background-color: #333;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-family: 'Lato', sans-serif;
 }
 
@@ -124,11 +124,24 @@ button:hover {
     display: none;
 }
 
+
+h2{
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 25px;
+    border-radius: 50px;
+}
+
+span {
+    font-weight: bold;
+    color: rgb(52, 214, 52);
+}
+
 @media (max-width: 767px) {
     html,
     body {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start; /* Garante que o conteúdo comece do topo */
         align-items: center;
         flex-direction: column;
         padding: 10px;
@@ -136,13 +149,15 @@ button:hover {
         margin: 0;
         width: 100%;
         height: 100%;
+        overflow-y: auto; /* Ativar rolagem se necessário */
     }
 
     form {
+        width: 100%; /* Garantir 100% da largura */
         max-width: 100%;
-        margin-bottom: 20px;
+        margin-top: 20px; /* Reduzindo a margem superior */
+        margin-bottom: 5px;
         padding: 20px;
-        margin-top: 70px;
         background-color: #333;
         box-sizing: border-box;
     }
@@ -153,7 +168,7 @@ button:hover {
         padding: 15px;
         width: 100%;
         box-sizing: border-box;
-        background-color: #fff;
+        background-color: #333;
         border-radius: 5px;
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
         font-family: 'Lato', sans-serif;
@@ -169,6 +184,14 @@ button:hover {
         width: 1200px;
         height: auto;
         margin: 20px 0;
+    }
+
+    
+    h2{
+        text-align: center;
+        border: 2px solid #fff;
+        padding: 25px;
+        border-radius: 50px;
     }
 }
 
