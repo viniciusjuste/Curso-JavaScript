@@ -49,7 +49,7 @@ window.onload = () => {
         themeImg.setAttribute('src', '../img/light_mode.svg'); // Define a imagem padrão
         themeImg.setAttribute('alt', 'light-theme');
     }
-};
+}
 
 async function fetchStockData(symbol) {
     try {
@@ -57,10 +57,10 @@ async function fetchStockData(symbol) {
 
         console.log(stockData);
 
-        stockName.innerHTML = `$${stockData['Global Quote']['01. symbol']}`;
+        stockName.innerHTML = `${stockData['Global Quote']['01. symbol']}`;
         currentPrice.innerHTML = `$${parseFloat(stockData['Global Quote']['05. price']).toFixed(2)}`;
         change.innerHTML = `$${parseFloat(stockData['Global Quote']['09. change']).toFixed(2)}`;
-        changePercent.innerHTML = `${stockData['Global Quote']['10. change percent']}%`;
+        changePercent.innerHTML = `${stockData['Global Quote']['10. change percent']}`;
         previousClose.innerHTML = `$${parseFloat(stockData['Global Quote']['08. previous close']).toFixed(2)}`;
         openPrice.innerHTML = `$${parseFloat(stockData['Global Quote']['02. open']).toFixed(2)}`;
         high.innerHTML = `$${parseFloat(stockData['Global Quote']['03. high']).toFixed(2)}`;
@@ -108,7 +108,7 @@ async function fetchStockDataDaily(symbol) {
 searchBtn.addEventListener('click', async (event) => {
     event.preventDefault();
     const symbol = companyInput.value.trim().toUpperCase();
-    const type = typeChart.value;
+    let type = '';
 
     if (!symbol) {
         alert('Por favor, digite o simbolo da empresa');
@@ -122,16 +122,38 @@ searchBtn.addEventListener('click', async (event) => {
         await fetchStockDataDaily(symbol);
         stockInfo.classList.remove('ocultar');
     } else if (timeRange.value === '7d') {
+        console.log('Tipo de gráfico:', type);
+        type = typeChart.value;
         await fetchAndRenderWeeklyChart(symbol, type);
     } else if (timeRange.value === '30d') {
+        type = typeChart.value;
         await fetchAndRenderMonthlyChart(symbol, type);
     }
+    if(timeRange.value === '' || typeChart.value === '') {
+        alert('Por favor, selecione o intervalo e o tipo de gráfico');
+    }
     companyInput.value = '';
+    timeRange.value = '';
+    typeChart.value = '';
 })
 
 const themeBtn = document.getElementById('themeBtn');
 themeBtn.addEventListener('click', () => {
     toggleTheme();
 })
+
+function toggleChartSelect() {
+    if (timeRange.value === '0d' || timeRange.value === '1d') {
+        // Desativa o select de gráfico se o intervalo for 'agora' ou '1 dia'
+        typeChart.setAttribute('disabled', true);
+        typeChart.style.cursor = 'not-allowed';
+    } else {
+        // Ativa o select de gráfico para outros intervalos
+        typeChart.removeAttribute('disabled');
+        typeChart.style.cursor = 'default';
+    }
+}
+
+timeRange.addEventListener('change', toggleChartSelect);
 
 
