@@ -21,14 +21,13 @@
                 <option value="1d">Desempenho diário</option>
                 <option value="7d">Desempenho nos últimos 7 dias</option>
                 <option value="30d">Desempenho no último mês</option>
-            </select> </div> 
-            <div class="mb-3"> <label for="typeChart">Tipo de gráfico:</label> <select id="typeChart"
-                class="form-select">
+            </select> </div>
+        <div class="mb-3"> <label for="typeChart">Tipo de gráfico:</label> <select id="typeChart" class="form-select">
                 <option value="">Selecione o tipo de gráfico</option>
                 <option value="line">Gráfico de linha</option>
                 <option value="bar">Gráfico de barras</option>
-            </select> </div> 
-            <button type="submit" id="searchBtn" class="btn btn-primary">Pesquisar</button>
+            </select> </div>
+        <button type="submit" id="searchBtn" class="btn btn-primary">Pesquisar</button>
     </form>
 
     <div class="stock-info ocultar " id="stock-info">
@@ -51,7 +50,7 @@
     <div class="chart-container">
         <canvas id="stockChart" class="chart ocultar" width="400" height="200"></canvas>
         <canvas id="weeklyChart" class="chart ocultar" width="400" height="200"></canvas>
-        <canvas id="stockChart" class="chart ocultar" width="400" height="200"></canvas>
+        <canvas id="monthlyChart" class="chart ocultar" width="400" height="200"></canvas>
     </div>
 
     <script type="module" src="../js/main.js"></script>

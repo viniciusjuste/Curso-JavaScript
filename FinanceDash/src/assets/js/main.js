@@ -1,7 +1,7 @@
 import { getStockPrice } from "../api/financeAPI.js";
 import { toggleTheme } from "../components/theme.js";
 import { TIME_SERIES_DAILY } from "../api/financeAPI.js";
-import { fetchAndRenderChartDaily, fetchAndRenderMonthlyChart, fetchAndRenderWeeklyChart } from "../components/chart.js";
+import { fetchAndRenderMonthlyChart, fetchAndRenderWeeklyChart } from "../components/chart.js";
 
 const companyInput = document.getElementById('companyInput');
 const searchBtn = document.getElementById('searchBtn');
@@ -81,7 +81,12 @@ async function fetchStockDataDaily(symbol) {
 
         console.log(stockData);
 
-        stockName.innerHTML = `$${stockData['Meta Data']['02. symbol']}`;
+        if (stockData) {
+            stockName.innerHTML = `${stockData['Meta Data']['2. Symbol']}`;
+        } else {
+            stockName.innerHTML = 'Erro ao buscar dados da empresa. Verifique o símbolo e tente novamente.';
+        }
+
 
         // Acessa o objeto Time Series (Daily)
         const timeSeries = stockData["Time Series (Daily)"];
@@ -105,16 +110,39 @@ async function fetchStockDataDaily(symbol) {
     }
 }
 
+// Função para ocultar o gráfico (esconde o canvas)
+function hideChart(chartId) {
+    const chartElement = document.getElementById(chartId);
+    if (chartElement) {
+        chartElement.style.display = 'none'; // Esconde o elemento do gráfico
+    }
+}
+
+// Função para exibir o gráfico (mostra o canvas)
+function showChart(chartId) {
+    const chartElement = document.getElementById(chartId);
+    if (chartElement) {
+        chartElement.style.display = 'block'; // Exibe o elemento do gráfico
+    }
+}
+
+
 searchBtn.addEventListener('click', async (event) => {
     event.preventDefault();
     const symbol = companyInput.value.trim().toUpperCase();
     let type = '';
 
     if (!symbol) {
-        alert('Por favor, digite o simbolo da empresa');
+        alert('Por favor, digite o símbolo da empresa');
         return;
     }
 
+    // Esconde inicialmente todas as áreas de gráfico
+    hideChart('weeklyChart');
+    hideChart('monthlyChart');
+    stockInfo.classList.add('ocultar'); // Esconde a seção de informações da empresa
+
+    // Lógica para buscar dados e exibir gráficos conforme o intervalo de tempo selecionado
     if (timeRange.value === '0d') {
         await fetchStockData(symbol);
         stockInfo.classList.remove('ocultar');
@@ -122,20 +150,32 @@ searchBtn.addEventListener('click', async (event) => {
         await fetchStockDataDaily(symbol);
         stockInfo.classList.remove('ocultar');
     } else if (timeRange.value === '7d') {
-        console.log('Tipo de gráfico:', type);
         type = typeChart.value;
-        await fetchAndRenderWeeklyChart(symbol, type);
+        if (type) {
+            await fetchAndRenderWeeklyChart(symbol, type);
+            showChart('weeklyChart'); // Mostra o gráfico semanal
+        }
     } else if (timeRange.value === '30d') {
         type = typeChart.value;
-        await fetchAndRenderMonthlyChart(symbol, type);
+        if (type) {
+            await fetchAndRenderMonthlyChart(symbol, type);
+            showChart('monthlyChart'); // Mostra o gráfico mensal
+        }
     }
-    if(timeRange.value === '' || typeChart.value === '') {
-        alert('Por favor, selecione o intervalo e o tipo de gráfico');
+
+    // Exibe alerta caso nenhum intervalo ou tipo de gráfico tenha sido selecionado
+    if (timeRange.value === '' || typeChart.value === '') {
+        if (timeRange.value !== '0d' && timeRange.value !== '1d') {
+            alert('Por favor, selecione o intervalo e o tipo de gráfico');
+        }
     }
+
+    // Limpa os campos de entrada após o clique
     companyInput.value = '';
     timeRange.value = '';
     typeChart.value = '';
-})
+});
+
 
 const themeBtn = document.getElementById('themeBtn');
 themeBtn.addEventListener('click', () => {
